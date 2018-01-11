@@ -1,23 +1,8 @@
-/*
-
-DEV NOTES:
-
-configurationLoader loads configurations from a json file and then merges them with existing confiugrations using a flag (overwriteInlineConfigs) to decide which parameters should be overwritten. By default this flag is false, that is inline configurations take precedence over those set in json file. The loader returns a promise object which once resolved will give access to configuration object. This object has also getter and setter methods which should be used to get and set configuration parameters.
-
-Usage example:
-
-configurationLoader({
-	json: 'url.to.configuration.json',
-	data: inline.configuration,
-	overwriteInlineConfigs: [boolean]
-}).then(function(data) {
-	window.myProject.configuration = data;
-	//it's now safe to run scripts that depend on configuration parameters
-});
-
-var test = myProject.configuration.get('nameOfProperty');
-
-*/
+/**
+ * VI configurationLoader v1.0.0
+ * For documentation see:
+ * https://github.com/frontend-framework/configuration
+ */
 
 configurationLoader = function(options) {
 	'use strict';

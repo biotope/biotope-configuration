@@ -1,0 +1,20 @@
+{
+  "name": "configurationLoader",
+  "version": "1.0.0",
+  "description": "configurationLoader.js loads configurations from a json file and then merges them with existing confiugrations",
+  "main": "configurationLoader.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/frontend-framework/configuration.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/frontend-framework/configuration/issues"
+  },
+  "homepage": "https://github.com/frontend-framework/configuration#readme"
+}
