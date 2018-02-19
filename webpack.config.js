@@ -6,7 +6,7 @@ module.exports = {
   entry: './configurationLoader.ts',
 
   output: {
-    filename: 'configurationLoader.js'
+    filename: 'configurationLoader.min.js'
   },
 
   resolve: {
