@@ -3,55 +3,59 @@
  * For documentation see:
  * https://github.com/frontend-framework/configuration
  */
+import {deepSet} from './deepSet';
+import {deepGet} from './deepGet';
+import 'whatwg-fetch';
 
-window['configurationLoader'] = function(options) {
-	'use strict';
+interface ConfigurationLoaderOptions {
+  data: object;
+  json: string;
+  overwriteInlineConfigs: boolean;
+}
 
-	var configuration = typeof options.data === 'undefined' ? {} : options.data;
+interface Configuration {
+  get: Function;
+  set: Function;
+}
 
-	if (!options.json) {
-		console.warn('Configuration file is not specified!');
+export const configurationLoader = (options: ConfigurationLoaderOptions): Promise<Configuration> => {
+
+	if (hasNoJson(options)) {
+		console.warn('Configuration file is not specified! Abortion configuration setup!');
 		return;
 	}
 
-	var promise = $.getJSON(options.json).then(function(data) {
+	return fetch(options.json).then((response) => {
+	  let mergedData = {};
 		if (options.overwriteInlineConfigs) {
-			$.extend(true, options.data, data);
-			configuration = options.data;
+      mergedData = {
+        ...getData(options),
+        ...response.json()
+      };
 		} else {
-			$.extend(true, data, options.data);
-			configuration = data;
+      mergedData = {
+        ...response.json(),
+        ...getData(options)
+      };
 		}
 
-		configuration.set = function(key, value) {
-			var tempKeys = key.split('.');
-			if(tempKeys.length === 2) {
-				if(typeof configuration[tempKeys[0]] === 'undefined') {
-					configuration.data[tempKeys[0]] = {};
-				}
-				configuration.data[tempKeys[0]][tempKeys[1]] = value;
-				return true;
-			}
-			configuration.data[tempKeys[0]] = value;
-			return true;
-		};
-
-		configuration.get = function(key) {
-			var tempKeys = key.split('.');
-			if(tempKeys.length === 2) {
-				if(typeof configuration.data[tempKeys[0]] === 'undefined' || typeof configuration.data[tempKeys[0]][tempKeys[1]] === 'undefined') {
-					return null;
-				}
-				return configuration.data[tempKeys[0]][tempKeys[1]];
-			}
-			if(typeof configuration.data[tempKeys[0]] === 'undefined') {
-				return null;
-			}
-			return configuration.data[tempKeys[0]];
-		};
-
-		return configuration;
-	});
-
-	return promise;
+		return createConfiguration(mergedData);
+	})
 };
+
+const getData = (options: ConfigurationLoaderOptions) => hasData(options) ? {} : options.data;
+const hasData = (options: ConfigurationLoaderOptions) => !(typeof options.data === 'undefined');
+
+const hasNoJson = (options: ConfigurationLoaderOptions) => !options.json;
+
+const createConfiguration = (baseData: object = {}): Configuration => ({
+  get: (key): any => deepGet(baseData, key),
+  set: (key: string, value: any): boolean => {
+    baseData = deepSet(baseData, key, value);
+    return deepGet(baseData, key) === value;
+  }
+});
+
+
+
+window['configurationLoader'] = configurationLoader;

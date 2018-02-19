@@ -8,11 +8,11 @@
     "allowSyntheticDefaultImports": true,
     "target": "ES5"
   },
+  "files": [
+    "configurationLoader.ts"
+  ],
   "typeRoots": [
     "node_modules/@types"
-  ],
-  "types": [
-    "jquery"
   ],
   "exclude": [
     "node_modules",
