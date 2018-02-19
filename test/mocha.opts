@@ -1,0 +1,2 @@
+**/*.spec.ts
+--compilers js:ts-node/register
