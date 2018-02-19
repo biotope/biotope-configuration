@@ -1,7 +1,7 @@
 /**
  * VI configurationLoader v1.0.0
  * For documentation see:
- * https://github.com/frontend-framework/configuration
+ * https://github.com/biotope/configuration
  */
 
 configurationLoader = function(options) {
