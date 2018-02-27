@@ -1,5 +1,7 @@
 # configurationLoader
 
+[![Join the chat at https://gitter.im/biotope/biotope-configuration](https://badges.gitter.im/biotope/biotope-configuration.svg)](https://gitter.im/biotope/biotope-configuration?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 configurationLoader.min.js loads configurations from a json file and then merges them with existing configurations using a flag (overwriteInlineConfigs) to decide which parameters should be overwritten. By default this flag is false, that is inline configurations take precedence over those set in json file. The loader returns a promise object which once resolved will give access to a configuration object. This object has also getter and setter methods which should be used to get and set configuration parameters.
 
 **Usage**
