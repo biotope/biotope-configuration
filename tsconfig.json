@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "sourceMap": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "ES5"
+  },
+  "files": [
+    "configurationLoader.ts"
+  ],
+  "typeRoots": [
+    "node_modules/@types"
+  ],
+  "exclude": [
+    "node_modules",
+    "patterns",
+    "test",
+    "dist",
+    ".tmp",
+    "**/*.spec.ts"
+  ]
+}
