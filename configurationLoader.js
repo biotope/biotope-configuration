@@ -1,7 +1,7 @@
 /**
- * VI configurationLoader v1.0.0
+ * Biotope configurationLoader
  * For documentation see:
- * https://github.com/biotope/configuration
+ * https://github.com/biotope/biotipe-configuration
  */
 
 configurationLoader = function(options) {
