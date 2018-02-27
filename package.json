@@ -1,24 +1,25 @@
 {
-  "name": "configurationLoader",
+  "name": "@biotope/configuration",
   "version": "1.0.0",
-  "description": "configurationLoader.js loads configurations from a json file and then merges them with existing confiugrations",
-  "main": "configurationLoader.js",
+  "description": "configurationLoader loads configurations from a json file and then merges them with existing configurations",
+  "main": "configurationLoader.min.js",
   "scripts": {
     "webpack": "node node_modules/.bin/webpack",
     "build": "npm run webpack",
+    "prepublishOnly": "npm run build",
     "test": "node node_modules/.bin/mocha --opts test/mocha.opts"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/frontend-framework/configuration.git"
+    "url": "git+https://github.com/biotope/biotope-configuration.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/frontend-framework/configuration/issues"
+    "url": "https://github.com/biotope/biotope-configuration/issues"
   },
-  "homepage": "https://github.com/frontend-framework/configuration#readme",
+  "homepage": "https://github.com/biotope/biotope-configuration",
   "devDependencies": {
     "@types/chai": "^4.1.2",
     "@types/jquery": "^3.3.0",

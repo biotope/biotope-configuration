@@ -1,7 +1,7 @@
 /**
- * VI configurationLoader v1.0.0
+ * Biotope configurationLoader
  * For documentation see:
- * https://github.com/frontend-framework/configuration
+ * https://github.com/biotope/biotope-configuration
  */
 import {deepSet} from './deepSet';
 import {deepGet} from './deepGet';
