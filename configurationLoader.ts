@@ -26,24 +26,27 @@ export const configurationLoader = (options: ConfigurationLoaderOptions): Promis
 	}
 
 	return fetch(options.json).then((response) => {
-	  let mergedData = {};
-		if (options.overwriteInlineConfigs) {
-      mergedData = {
-        ...getData(options),
-        ...response.json()
-      };
-		} else {
-      mergedData = {
-        ...response.json(),
-        ...getData(options)
-      };
-		}
+		return response.json().then((jsonData)=> {
+			let mergedData = {};
 
-		return createConfiguration(mergedData);
-	})
+			if (options.overwriteInlineConfigs) {
+				mergedData = {
+					...getData(options),
+					...jsonData
+				};
+			} else {
+				mergedData = {
+					...jsonData,
+					...getData(options)
+				};
+			}
+
+			return createConfiguration(mergedData);
+		});
+	});
 };
 
-const getData = (options: ConfigurationLoaderOptions) => hasData(options) ? {} : options.data;
+const getData = (options: ConfigurationLoaderOptions) => hasData(options) ? options.data : {};
 const hasData = (options: ConfigurationLoaderOptions) => !(typeof options.data === 'undefined');
 
 const hasNoJson = (options: ConfigurationLoaderOptions) => !options.json;
