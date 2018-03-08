@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>configurationLoader demo</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<script>
+			var app = {};
+			app.configuration = {};
+			app.configuration.lang = 'en';
+		</script>
+    </head>
+    <body>
+        <p>Hello world! This is HTML5 Boilerplate.</p>
+        <script src="../configurationLoader.js"></script>
+        <script>
+			configurationLoader({
+				json: 'configuration.json',
+				data: app.configuration,
+				overwriteInlineConfigs: false
+			}).then(function(configuration) {
+				// It's now safe to run scripts depending on configuration parameters
+				console.log(configuration.get('lang'), configuration.get('data'));
+			});
+		</script>
+    </body>
+</html>
