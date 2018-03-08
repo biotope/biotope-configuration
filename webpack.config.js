@@ -1,12 +1,10 @@
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-
 module.exports = {
   watch: false,
 
   entry: './configurationLoader.ts',
 
   output: {
-    filename: 'configurationLoader.min.js'
+    filename: 'configurationLoader.js'
   },
 
   resolve: {
@@ -20,9 +18,5 @@ module.exports = {
         loader: 'awesome-typescript-loader'
       }
     ]
-  },
-
-  plugins: [
-    new UglifyJsPlugin()
-  ]
+  }
 };
