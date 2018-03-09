@@ -6,6 +6,7 @@
 import {deepSet} from './deepSet';
 import {deepGet} from './deepGet';
 import 'whatwg-fetch';
+import merge from 'deepmerge';
 
 interface ConfigurationLoaderOptions {
 	data: object;
@@ -27,19 +28,7 @@ export const configurationLoader = (options: ConfigurationLoaderOptions): Promis
 
 	return fetch(options.json).then((response) => {
 		return response.json().then((jsonData) => {
-			let mergedData = {};
-
-			if (options.overwriteInlineConfigs) {
-				mergedData = {
-					...getData(options),
-					...jsonData
-				};
-			} else {
-				mergedData = {
-					...jsonData,
-					...getData(options)
-				};
-			}
+			let mergedData: object = (options.overwriteInlineConfigs) ? merge(getData(options), jsonData) : merge(jsonData, getData(options));
 
 			return createConfiguration(mergedData);
 		});

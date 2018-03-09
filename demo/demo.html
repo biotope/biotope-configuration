@@ -8,8 +8,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<script>
 			var app = {};
-			app.configuration = {};
+			app.configuration = { data: {} };
 			app.configuration.lang = 'en';
+			app.configuration.data.page = "test";
 		</script>
     </head>
     <body>
@@ -21,8 +22,9 @@
 				data: app.configuration,
 				overwriteInlineConfigs: false
 			}).then(function(configuration) {
-				// It's now safe to run scripts depending on configuration parameters
-				console.log(configuration.get('lang'), configuration.get('data'));
+				console.log(configuration.get('lang')); //depending on whether overwriteInlineConfigs flag is true or false this will return "de" or "en"
+
+				console.log(configuration.get('data')); //this would always return properties "id" and "page", value of "page" property depends on overwriteInlineConfigs flag.
 			});
 		</script>
     </body>
