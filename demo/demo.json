@@ -1,6 +1,7 @@
 {
 	"data": {
-		"id": "lorem"
+		"id": "lorem",
+		"page": "demo"
 	},
 	"lang": "de"
 }
