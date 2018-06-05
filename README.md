@@ -12,10 +12,25 @@ configurationLoader({
 	overwriteInlineConfigs: [optional boolean parameter]
 }).then(function(configuration) {
 	window.myProject.configuration = configuration;
-	// It's now safe to run scripts depending on configuration parameters
+	window.myProject.configurationIsReady = true;
+	$(window).trigger('configurationIsReady');
 });
 
-var test = myProject.configuration.get('nameOfProperty');
+// DOM is fully loaded
+$(function () {
+	if (myProject.configurationIsReady) {
+		myProject.init();
+	} else {
+		$(window).on('configurationIsReady', function() {
+			myProject.init();
+		});
+	}
+});
+
+// It's now safe to run scripts depending on configuration parameters
+myProject.init = function() {
+	var test = myProject.configuration.get('nameOfProperty');
+};
 ```
 
 
