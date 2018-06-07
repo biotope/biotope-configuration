@@ -26,7 +26,16 @@ export const configurationLoader = (options: ConfigurationLoaderOptions): Promis
 		return;
 	}
 
-	return fetch(options.json).then((response) => {
+	return fetch(options.json,
+	{
+		cache: 'no-cache',
+		mode: 'cors',
+		credentials: 'same-origin',
+		headers: {
+			'content-type': 'application/json'
+		  }
+	}
+	).then((response) => {
 		return response.json().then((jsonData) => {
 			let mergedData: object = (options.overwriteInlineConfigs) ? merge(getData(options), jsonData) : merge(jsonData, getData(options));
 

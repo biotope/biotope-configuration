@@ -1,10 +1,10 @@
 {
   "name": "@biotope/configuration",
-  "version": "2.0.2",
+  "version": "2.1.0",
   "description": "configurationLoader loads configurations from a json file and then merges them with existing configurations",
-  "main": "configurationLoader.min.js",
+  "main": "dist/configurationLoader.js",
   "scripts": {
-    "webpack": "node node_modules/.bin/webpack",
+    "webpack": "node ./node_modules/webpack/bin/webpack",
     "build": "npm run webpack",
     "prepublishOnly": "npm run build",
     "test": "node node_modules/.bin/mocha --opts test/mocha.opts"
@@ -13,20 +13,22 @@
     "type": "git",
     "url": "git+https://github.com/biotope/biotope-configuration.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "configuration",
+    "biotope"
+  ],
+  "author": "The Biotope Team",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/biotope/biotope-configuration/issues"
   },
   "homepage": "https://github.com/biotope/biotope-configuration",
   "devDependencies": {
     "@types/chai": "^4.1.2",
-    "@types/jquery": "^3.3.0",
     "@types/mocha": "^2.2.48",
     "awesome-typescript-loader": "^3.4.1",
     "chai": "^4.1.2",
-	"deepmerge": "^2.1.0",
+    "deepmerge": "^2.1.0",
     "mocha": "^5.0.1",
     "ts-node": "^4.1.0",
     "typescript": "^2.7.2",
