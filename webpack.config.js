@@ -1,10 +1,11 @@
 module.exports = {
   watch: false,
+  mode: 'none',
 
   entry: './configurationLoader.ts',
 
   output: {
-    filename: 'dist/configurationLoader.js'
+    filename: 'configurationLoader.js'
   },
 
   resolve: {
