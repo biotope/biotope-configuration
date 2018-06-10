@@ -1,6 +1,6 @@
 {
   "name": "@biotope/configuration",
-  "version": "2.1.0",
+  "version": "3.0.0",
   "description": "configurationLoader loads configurations from a json file and then merges them with existing configurations",
   "main": "dist/configurationLoader.js",
   "scripts": {

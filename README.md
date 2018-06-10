@@ -2,7 +2,12 @@
 
 [![Join the chat at https://gitter.im/biotope/biotope-configuration](https://badges.gitter.im/biotope/biotope-configuration.svg)](https://gitter.im/biotope/biotope-configuration?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-configurationLoader.min.js loads configurations from a json file and then merges them with existing configurations using a flag (overwriteInlineConfigs) to decide which parameters should be overwritten. By default this flag is false, that is inline configurations take precedence over those set in json file. The loader returns a promise object which once resolved will give access to a configuration object. This object has also getter and setter methods which should be used to get and set configuration parameters.
+configurationLoader is an object that helps with storing and retrieving configuration data for your Web project. The loader should be initialized as early as possible, preferably in head of your app/page and before any other script runs.
+
+**API**
+-*get(name)* You can use get(name) method to retrieve value of a property.
+-*set(name, value)* to set value of a specific a property. T
+-*setRemote(pathToJson, callback, [overwrite: boolean])* This method sets properties by loading them from a json file. The overwrite option by default is true, but it can be set to false so that properties loaded from json will not overwrite existing properties stored in the loader object. SetRemote loads json async and calls the callback function as soon as it's done.
 
 **Usage**
 ```javascript
@@ -32,5 +37,3 @@ myProject.init = function() {
 	var test = myProject.configuration.get('nameOfProperty');
 };
 ```
-
-
