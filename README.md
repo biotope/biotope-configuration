@@ -5,9 +5,10 @@
 configurationLoader is an object that helps with storing and retrieving configuration data for your Web project. The loader should be initialized as early as possible, preferably in head of your app/page and before any other script runs.
 
 **API**
--*get(name)* You can use get(name) method to retrieve value of a property.
--*set(name, value)* to set value of a specific a property. T
--*setRemote(pathToJson, callback, [overwrite: boolean])* This method sets properties by loading them from a json file. The overwrite option by default is true, but it can be set to false so that properties loaded from json will not overwrite existing properties stored in the loader object. SetRemote loads json async and calls the callback function as soon as it's done.
+
+- **get(name)** Use this method to retrieve value of a property.
+- **set(name, value)** Use this method to set the value of a particular property.
+- **setRemote(pathToJson, callback, [overwrite: boolean])** This method sets properties by loading them from a json file. The overwrite option by default is true, but it can be set to false so that properties loaded from json will not overwrite existing properties in the loader. SetRemote loads json async and invokes the callback function as soon as it's done.
 
 **Usage**
 ```javascript
