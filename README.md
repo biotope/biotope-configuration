@@ -8,7 +8,7 @@ configurationLoader is an object that helps with storing and retrieving configur
 
 - **get(name)** Use this method to retrieve value of a property.
 - **set(name, value)** Use this method to set the value of a particular property.
-- **setRemote(options)** This method sets properties by loading them from a json file. The overwrite option by default is true, but it can be set to false so that properties loaded from json will not overwrite existing properties in the loader. SetRemote loads json async and invokes the callback function as soon as it's done.
+- **setRemote({path: 'url-to-json', callback: fn, overwrite: true})** This method sets properties by loading them from a json file. The path and callback are required options, overwrite is optional (default is true). If overwrite is set to false, properties loaded from json will not overwrite existing properties in the loader. SetRemote loads json async and invokes the callback function as soon as it's done.
 
 **Usage**
 ```javascript
