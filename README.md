@@ -10,29 +10,32 @@ configurationLoader is an object that helps with storing and retrieving configur
 - **set(name, value)** Use this method to set the value of a particular property.
 - **setRemote({path: 'url-to-json', callback: fn, overwrite: true})** This method sets properties by loading them from a json file. The path and callback are required options, overwrite is optional (default is true). If overwrite is set to false, properties loaded from json will not overwrite existing properties in the loader. SetRemote loads json async and invokes the callback function as soon as it's done.
 
-**Usage**
+**Usage in browser**
 ```javascript
-var myApp = {};
-myApp.config = configurationLoader();
-myApp.config.set('data.language', 'en');
-myApp.config.get('data.language'); //en
-myApp.config.setRemote({
-	path: 'url.to.configuration.json',
-	callback: function() {
-		//myApp.config is now updated with data from json file.
-		myApp.configurationIsReady = true;
-		if (window.domIsReady) {
+<script src="configurationLoader.js"></script>
+<script>
+	var myApp = {};
+	myApp.config = configurationLoader();
+	myApp.config.set('data.language', 'en');
+	myApp.config.get('data.language'); //en
+	myApp.config.setRemote({
+		path: 'url-to-json',
+		callback: function() {
+			//myApp.config is now updated with data from json file.
+			myApp.configurationIsReady = true;
+			if (window.domIsReady) {
+				myApp.init();
+			}
+		},
+		overwrite: false
+	});
+
+	// DOM is ready
+	$(function () {
+		window.domIsReady = true;
+		if (myApp.configurationIsReady) {
 			myApp.init();
 		}
-	},
-	overwrite: false
-});
-
-// DOM is ready
-$(function () {
-	window.domIsReady = true;
-	if (myApp.configurationIsReady) {
-		myApp.init();
-	}
-});
+	});
+</script>
 ```
