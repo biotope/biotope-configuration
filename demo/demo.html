@@ -6,26 +6,31 @@
         <title>demo</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<script>
-			var app = {};
-			app.configuration = { data: {} };
-			app.configuration.lang = 'en';
-			app.configuration.data.page = "test";
+        <script src="../dist/configurationLoader.js"></script>
+        <script>
+            app = {};
+            app.config = configurationLoader();
+			app.config.set('lang', 'en');
+			app.config.set('data.page', 'test');
+
+            console.log(app.config.get('lang'), app.config.get('data.page'));
+
+            app.config.setRemote({
+                url: 'demo.json',
+				overwrite: false
+            }).then(function() {
+                console.log('then: ', app.config.get('data.id'), app.config.get('lang'));
+                app.init();
+            });
+
+            app.init = function() {
+                app.config.set('data.id', 'ipsum');
+                console.log('app.init: ', app.config.get('data.id'));
+            }
 		</script>
     </head>
     <body>
-        <p>Hello world! This is HTML5 Boilerplate.</p>
-        <script src="../dist/configurationLoader.js"></script>
-        <script>
-			configurationLoader({
-				json: 'demo.json',
-				data: app.configuration,
-				overwriteInlineConfigs: false
-			}).then(function(configuration) {
-				console.log(configuration.get('lang')); //depending on whether overwriteInlineConfigs flag is true or false this will return "de" or "en"
-
-				console.log(configuration.get('data')); //this would always return properties "id" and "page", value of "page" property depends on overwriteInlineConfigs flag.
-			});
-		</script>
+        <h1>ConfigurationLoader</h1>
+        <p>See console...</p>
     </body>
 </html>
