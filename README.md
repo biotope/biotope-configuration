@@ -14,20 +14,19 @@ configurationLoader is an object that helps with storing and retrieving configur
 ```javascript
 <script src="configurationLoader.js"></script>
 <script>
-	var myApp = {};
+	myApp = {};
 	myApp.config = configurationLoader();
 	myApp.config.set('data.language', 'en');
 	myApp.config.get('data.language'); //en
 	myApp.config.setRemote({
-		path: 'url-to-json',
-		callback: function() {
-			//myApp.config is now updated with data from json file.
-			myApp.configurationIsReady = true;
-			if (window.domIsReady) {
-				myApp.init();
-			}
-		},
+		url: 'url-to-json',
 		overwrite: false
+	}).then(function() {
+		//myApp.config is now updated with data from json file.
+		myApp.configurationIsReady = true;
+		if (window.domIsReady) {
+			myApp.init();
+		}		
 	});
 
 	// DOM is ready
