@@ -1,7 +1,6 @@
 {
 	"data": {
 		"id": "lorem",
-		"page": "demo"
-	},
-	"lang": "de"
+		"language": "de"
+	}
 }

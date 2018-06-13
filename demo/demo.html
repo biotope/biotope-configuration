@@ -6,31 +6,29 @@
         <title>demo</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <script src="../dist/configurationLoader.js"></script>
+        <script src="../dist/biotopeConfiguration.js"></script>
         <script>
-            app = {};
-            app.config = configurationLoader();
-			app.config.set('lang', 'en');
-			app.config.set('data.page', 'test');
+            myApp = {};
+            myApp.config = biotopeConfiguration();
+            myApp.config.set('data.language', 'en');
 
-            console.log(app.config.get('lang'), app.config.get('data.page'));
+            console.log(myApp.config.get('data.language'));
 
-            app.config.setRemote({
+            myApp.config.setRemote({
                 url: 'demo.json',
 				overwrite: false
             }).then(function() {
-                console.log('then: ', app.config.get('data.id'), app.config.get('lang'));
-                app.init();
+                //myApp.config is now updated with data from json file.
+                myApp.init();
             });
 
-            app.init = function() {
-                app.config.set('data.id', 'ipsum');
-                console.log('app.init: ', app.config.get('data.id'));
+            myApp.init = function() {
+                console.log('Configuration is ready!', myApp.config.get('data'));
             }
 		</script>
     </head>
     <body>
-        <h1>ConfigurationLoader</h1>
+        <h1>biotopeConfiguration</h1>
         <p>See console...</p>
     </body>
 </html>

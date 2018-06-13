@@ -9,7 +9,7 @@
     "target": "ES5"
   },
   "files": [
-    "configurationLoader.ts"
+    "biotopeConfiguration.ts"
   ],
   "typeRoots": [
     "node_modules/@types"

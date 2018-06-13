@@ -1,8 +1,8 @@
 module.exports = {
 	mode: 'none',
-	entry: './configurationLoader.ts',
+	entry: './biotopeConfiguration.ts',
 	output: {
-		filename: 'configurationLoader.js'
+		filename: 'biotopeConfiguration.js'
 	},
 	resolve: {
 		extensions: ['.ts']

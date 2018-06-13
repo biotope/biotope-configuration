@@ -1,8 +1,8 @@
-# configurationLoader
+# biotopeConfiguration
 
 [![Join the chat at https://gitter.im/biotope/biotope-configuration](https://badges.gitter.im/biotope/biotope-configuration.svg)](https://gitter.im/biotope/biotope-configuration?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-configurationLoader is an object that helps with storing and retrieving configuration data for your Web project. The loader should be initialized as early as possible, preferably in head of your app/page and before any other script runs.
+biotopeConfiguration is a script that helps you store and retrieve configuration data for your Web project. The script should be initialized as early as possible, preferably in head of your app or Web page and before any other script runs. This allows you to use set() and get() methods immediately. If your configuration data is stored in a json file, you can use setRemote() method to load data from that file as well. See usage section or demo page for an example of how to use this script.
 
 **API**
 
@@ -12,14 +12,14 @@ configurationLoader is an object that helps with storing and retrieving configur
 
 **Usage in browser**
 ```javascript
-<script src="configurationLoader.js"></script>
+<script src="biotopeConfiguration.js"></script>
 <script>
 	myApp = {};
-	myApp.config = configurationLoader();
+	myApp.config = biotopeConfiguration();
 	myApp.config.set('data.language', 'en');
 	myApp.config.get('data.language'); //en
 	myApp.config.setRemote({
-		url: 'url-to-json',
+		url: 'demo.json',
 		overwrite: false
 	}).then(function() {
 		//myApp.config is now updated with data from json file.

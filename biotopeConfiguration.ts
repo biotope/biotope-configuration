@@ -1,5 +1,5 @@
 /**
- * Biotope configurationLoader
+ * biotopeConfiguration
  * For documentation see:
  * https://github.com/biotope/biotope-configuration
  */
@@ -19,7 +19,7 @@ interface setRemoteOptions {
 	overwrite: boolean;
 }
 
-export const configurationLoader = (): Configuration => {
+export const biotopeConfiguration = (): Configuration => {
 	let configData = {};
 
 	return {
@@ -47,4 +47,4 @@ export const configurationLoader = (): Configuration => {
 	}
 };
 
-window['configurationLoader'] = configurationLoader;
+window['biotopeConfiguration'] = biotopeConfiguration;
