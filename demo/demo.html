@@ -1,34 +1,47 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>demo</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <script src="../dist/biotopeConfiguration.js"></script>
-        <script>
-            myApp = {};
-            myApp.config = biotopeConfiguration();
-            myApp.config.set('data.language', 'en');
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<title>demo</title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<script src="../dist/biotopeConfiguration.js"></script>
+		<script>
+			myApp = {};
+			myApp.config = biotopeConfiguration();
+			myApp.config.set('data.language', 'en');
 
-            console.log(myApp.config.get('data.language'));
+			console.log(myApp.config.get('data.language'));
 
-            myApp.config.setRemote({
-                url: 'demo.json',
+			myApp.config.setRemote({
+				url: 'demo.json',
 				overwrite: false
-            }).then(function() {
-                //myApp.config is now updated with data from json file.
-                myApp.init();
-            });
+			}).then(function() {
+				//myApp.config is now updated with data from json file.
+				myApp.configurationIsReady = true;
+				
+				if (window.domIsReady) {
+					myApp.init();
+				}
+			});
 
-            myApp.init = function() {
-                console.log('Configuration is ready!', myApp.config.get('data'));
-            }
+			// DOM is ready
+			$(function () {
+				window.domIsReady = true;
+
+				if (myApp.configurationIsReady) {
+					myApp.init();
+				}
+			});
+
+			myApp.init = function() {
+				console.log('Configuration is ready!', myApp.config.get('data'));
+			}
 		</script>
-    </head>
-    <body>
-        <h1>biotopeConfiguration</h1>
-        <p>See console...</p>
-    </body>
+	</head>
+	<body>
+		<h1>biotopeConfiguration</h1>
+		<p>See console...</p>
+	</body>
 </html>
