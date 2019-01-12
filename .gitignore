@@ -1,2 +1,4 @@
 node_modules
 configurationLoader.js
+.idea
+coverage

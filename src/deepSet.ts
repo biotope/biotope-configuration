@@ -1,6 +1,6 @@
 export const deepSet = (object: object = {}, key: string = '', value: any): object => {
-  const objectCopy = {...object};
-  if(!key || !value) {
+  const objectCopy = { ...object };
+  if (!key || !value) {
     return objectCopy;
   }
 
@@ -12,12 +12,12 @@ export const deepSet = (object: object = {}, key: string = '', value: any): obje
   for (let i = 0; i <= lastKeyIndex; i++) {
     const currentKey = keys[i];
 
-    if(typeof property === 'object') {
-      if(!property.hasOwnProperty(currentKey)) {
+    if (typeof property === 'object') {
+      if (!property.hasOwnProperty(currentKey)) {
         property[currentKey] = {};
       }
 
-      if(i === lastKeyIndex) {
+      if (i === lastKeyIndex) {
         property[currentKey] = value;
       } else {
         property = property[currentKey];

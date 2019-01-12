@@ -1,34 +1,32 @@
-import {expect} from 'chai';
-import {deepSet} from './deepSet';
+import { deepSet } from './deepSet';
 
 describe('#deepSet', () => {
   it('returns initial object for no key', () => {
     const initialObject = {};
     const returnedObject = deepSet(initialObject, undefined, 'test');
 
-    expect(returnedObject).to.deep.equal(initialObject);
+    expect(returnedObject).toEqual(initialObject);
   });
 
   it('returns initial object for no value', () => {
     const initialObject = {};
     const returnedObject = deepSet(initialObject, 'a.b.', undefined);
 
-    expect(returnedObject).to.deep.equal(initialObject);
+    expect(returnedObject).toEqual(initialObject);
   });
 
   it('sets value to single deep key', () => {
     const initialObject = {};
     const returnedObject = deepSet(initialObject, 'a', 'test');
 
-    expect(returnedObject['a']).to.equal('test');
+    expect(returnedObject['a']).toBe('test');
   });
 
   it('sets value to multi deep key', () => {
     const initialObject = {};
     const returnedObject = deepSet(initialObject, 'a.b', 'test');
 
-    expect(returnedObject['a']).to.have.key('b');
-    expect(returnedObject['a']['b']).to.equal('test');
+    expect(returnedObject['a']['b']).toBe('test');
   });
 
   it('does not set value to multi deep key with existing object', () => {
@@ -37,7 +35,7 @@ describe('#deepSet', () => {
     };
     const returnedObject = deepSet(initialObject, 'a.b', 'test');
 
-    expect(returnedObject['a']).to.not.have.key('b');
-    expect(returnedObject['a']).to.equal('blocked');
+    expect(returnedObject['a']['b']).toBeUndefined;
+    expect(returnedObject['a']).toBe('blocked');
   });
 });
