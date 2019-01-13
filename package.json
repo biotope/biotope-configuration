@@ -2,7 +2,7 @@
   "name": "@biotope/configuration",
   "version": "2.1.0",
   "description": "configurationLoader loads configurations from a json file and then merges them with existing configurations",
-  "main": "dist/configurationLoader.js",
+  "main": "dist/configurationLoader.min.js",
   "scripts": {
     "build": "rollup -c",
     "test": "jest"
@@ -23,9 +23,14 @@
   "homepage": "https://github.com/biotope/biotope-configuration",
   "devDependencies": {
     "@types/jest": "^23.3.12",
-    "deepmerge": "^2.1.1",
     "jest": "^23.6.0",
     "rollup": "^1.1.0",
+    "rollup-plugin-commonjs": "^9.2.0",
+    "rollup-plugin-node-resolve": "^4.0.0",
+    "rollup-plugin-progress": "^1.0.0",
+    "rollup-plugin-terser": "^4.0.2",
+    "rollup-plugin-typescript2": "^0.18.1",
+    "rollup-plugin-visualizer": "^0.9.2",
     "ts-jest": "^23.10.5",
     "typescript": "^2.9.2"
   },
