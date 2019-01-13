@@ -7,6 +7,7 @@
     "release": "np --no-yarn",
     "build": "rollup -c",
     "test": "jest",
+    "test:report": "npm run test && && codecov",
     "docs": "docsify serve docs"
   },
   "repository": {
