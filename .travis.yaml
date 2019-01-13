@@ -3,6 +3,6 @@ node_js:
   - "8"
   - "9"
   - "10"
-install: npm install -g yarn && yarn install
-before_script: yarn run build
-script: yarn run test
+  - "11"
+install: npm install
+script: npm run test
