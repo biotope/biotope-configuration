@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "noEmitHelpers": true,
     "target": "es6",
     "lib": [
       "es6",
