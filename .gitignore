@@ -1,2 +1,8 @@
 node_modules
 configurationLoader.js
+.idea
+coverage
+.rpt2_cache
+lib
+dist
+stats.html
