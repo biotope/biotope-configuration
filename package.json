@@ -39,7 +39,7 @@
   "homepage": "https://github.com/biotope/biotope-configuration",
   "devDependencies": {
     "@types/jest": "^24.9.1",
-    "codecov": "^3.5.0",
+    "codecov": "^3.6.2",
     "docsify-cli": "^4.3.0",
     "jest": "^24.8.0",
     "np": "^5.0.3",
